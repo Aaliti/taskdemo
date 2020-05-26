@@ -7,6 +7,7 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.task.configuration.EnableTask;
@@ -22,7 +23,7 @@ import java.util.Date;
 @SpringBootApplication
 @Slf4j
 //@EnableScheduling
-public class TaskdemoApplication {
+public class TaskdemoApplication implements CommandLineRunner {
 
     @Autowired
     private JobLauncher jobLauncher;
@@ -35,9 +36,10 @@ public class TaskdemoApplication {
     }
 
     //@Scheduled(cron = "0 */1 * * * ?")
-    @Bean
-    public void run() {
+    //@Bean
 
+    @Override
+    public void run(String... args) throws Exception {
         log.info("time : {} ",LocalDateTime.now());
         try{
             JobParametersBuilder jobParametersBuilder = new JobParametersBuilder();
@@ -49,5 +51,4 @@ public class TaskdemoApplication {
             log.error("Error : {} ",e.getMessage());
         }
     }
-
 }

@@ -28,7 +28,7 @@ public class JobBatchConfig extends DefaultBatchConfigurer {
 
     @Autowired
     @Override
-    public void setDataSource(@Qualifier("db2DataSource") DataSource dataSource) {
+    public void setDataSource(@Qualifier("batchDataSource") DataSource dataSource) {
         super.setDataSource(dataSource);
     }
 
@@ -79,11 +79,7 @@ public class JobBatchConfig extends DefaultBatchConfigurer {
 
     @Bean
     public Job job() {
-
-
         if (jobName.equals("job1")) {
-
-
             return jobBuilderFactory.get("Task1job")
                     .start(task1Step())
                     .build();
@@ -95,7 +91,6 @@ public class JobBatchConfig extends DefaultBatchConfigurer {
                     .start(task2Step())
                     .build();
         } else if (jobName.equals("composedTask")) {
-
 
             return jobBuilderFactory.get("ComposedTaskjob")
                     .start(task1Step())

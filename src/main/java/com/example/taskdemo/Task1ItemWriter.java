@@ -21,6 +21,6 @@ public class Task1ItemWriter implements ItemWriter<String> {
     @AfterStep
     public void afterStep1() throws InterruptedException {
         System.out.println("--------------- fin step 1");
-        Thread.sleep(60000);
+        //Thread.sleep(60000);
     }
 }

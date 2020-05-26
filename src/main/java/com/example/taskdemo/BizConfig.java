@@ -11,20 +11,20 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 @Configuration
-public class Db1Config {
+public class BizConfig {
 
         @Primary
-        @Bean(name = "db1DataSourceProperties")
-        @ConfigurationProperties("db1.datasource")
+        @Bean(name = "bizDataSourceProperties")
+        @ConfigurationProperties("biz.datasource")
         public DataSourceProperties dataSourceProperties() {
             return new DataSourceProperties();
         }
 
         @Primary
-        @Bean(name = "db1DataSource")
-        @ConfigurationProperties("db1.datasource.configuration")
-        public DataSource dataSource(@Qualifier("db1DataSourceProperties") DataSourceProperties db1DataSourceProperties) {
-            return db1DataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource.class)
+        @Bean(name = "bizDataSource")
+        @ConfigurationProperties("biz.datasource.configuration")
+        public DataSource dataSource(@Qualifier("bizDataSourceProperties") DataSourceProperties bizDataSourceProperties) {
+            return bizDataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource.class)
                     .build();
         }
 

@@ -10,17 +10,17 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-public class Db2Config {
+public class BatchConfig {
 
-    @Bean(name = "db2DataSourceProperties")
-    @ConfigurationProperties("db2.datasource")
+    @Bean(name = "batchDataSourceProperties")
+    @ConfigurationProperties("batch.datasource")
     public DataSourceProperties dataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Bean(name = "db2DataSource")
-    @ConfigurationProperties("db2.datasource.configuration")
-    public DataSource dataSource(@Qualifier("db2DataSourceProperties") DataSourceProperties dataSourceProperties) {
+    @Bean(name = "batchDataSource")
+    @ConfigurationProperties("batch.datasource.configuration")
+    public DataSource dataSource(@Qualifier("batchDataSourceProperties") DataSourceProperties dataSourceProperties) {
         return dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource.class)
                 .build();
     }

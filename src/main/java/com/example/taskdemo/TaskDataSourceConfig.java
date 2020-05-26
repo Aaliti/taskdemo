@@ -11,11 +11,11 @@ import javax.sql.DataSource;
 public class TaskDataSourceConfig extends DefaultTaskConfigurer{
 
 //    @Autowired
-//    @Qualifier("db2DataSource")
+//    @Qualifier("batchDataSource")
 //    private DataSource primaryDataSource;
 
 
-    public TaskDataSourceConfig(@Qualifier("db2DataSource") DataSource dataSource) {
+    public TaskDataSourceConfig(@Qualifier("batchDataSource") DataSource dataSource) {
         super(dataSource);
     }
 

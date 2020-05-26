@@ -22,7 +22,7 @@ public class Task1ItemReader implements ItemReader<String> {
     //@PostConstruct
     @BeforeStep
     public void init () throws InterruptedException {
-        Thread.sleep(60000);
+        //Thread.sleep(60000);
         this.comptes = getComptes();
         this.i = 0;
         this.count = comptes.size();
